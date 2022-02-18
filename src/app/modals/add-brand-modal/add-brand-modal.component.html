@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5>Add a Brand</h5>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="myFormGroup">
+            <label>Brand Logo</label>
+            <div class="image-container">
+                <input #imagePicker class="d-none" type="file" name="brand-logo" id="brand-logo" (change)="onImageChange($event)">
+                <img class="brand-logo" [src]="getBrandLogo" onerror="this.src='../../../assets/add-image.png'" alt="brand-logo" (click)="imagePicker.click();">
+            </div>
+            <label for="brand-name">Brand Name</label>
+            <input id="brand-name" type="text" class="form-control" placeholder="Brand Name" formControlName="name">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="brand-description">Brand Description (20 - 150 characters)</label>
+                    <textarea class="form-control" name="descrpition" id="brand-description" rows="4" placeholder="Enter brand description..." formControlName="description"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="modal.close(false);">Cancel</button>
+        <button class="btn btn-primary" [disabled]="!isFormGroupValid" (click)="onSave()">Save</button>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="content mt-5">
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <h4 class="mb-3">Brands List</h4>
+        </div>
+        <div class="col-md-6">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="search" id="brand-search-input" 
+                        [(ngModel)]="searchString" (ngModelChange)="searchBrand();" placeholder="Search Brands..." >
+                </div>
+                <div class="col-md-4 text-right">
+                    <button class="btn btn-primary" (click)="onAddBrand()">Add Brand</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="table w-100">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Logo</th>
+                <th>Description</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let brand of brandsList">
+                <td><h5>{{brand.name}}</h5></td>
+                <td>
+                    <img class="brand-logo" src="{{brand.logo}}" alt="logo">
+                </td>
+                <td>{{brand.description}}</td>
+                <td>{{brand.createdAt | date: 'short'}}</td>
+                <td>{{brand.updatedAt | date: 'short'}}</td>
+                <td class="tect-center">
+                    <a href="javascript:void(0)" (click)="editBrand(brand);">
+                        <img class="table-action" src="../../../assets/editing.png" alt="edit">
+                    </a> 
+                    <a href="javascript:void(0)" (click)="deleteBrand(brand);">
+                        <img class="table-action" src="../../../assets/delete.png" alt="delete">
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </div>
+</div>
